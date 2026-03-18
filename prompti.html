@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<title>AI Storitev</title>
+
+<script>
+function copyText(id, btn) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text);
+
+    btn.classList.add("copied");
+    btn.innerText = "COPIED";
+}
+
+function resetBtn(btn) {
+    btn.classList.remove("copied");
+    btn.innerText = "COPY";
+}
+</script>
+
+<style>
+* {
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+.ai-header {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* GUMB OKOLI TEKSTA */
+.ai-title-btn {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.ai-title-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.05);
+}
+
+/* NAVBAR */
+.nav-bar {
+    display: flex;
+    height: 60px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* MAIN CONTENT */
+.container {
+    padding: 30px;
+    flex: 1;
+}
+
+/* PROMPT CARD */
+.prompt-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* NASLOV */
+.prompt-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* TEXT LIMIT */
+.prompt-text {
+    flex: 1;
+    margin-right: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* COPY BUTTON */
+.copy-btn {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* KO JE COPIED */
+.copy-btn.copied {
+    background: #22c55e;
+}
+
+/* FOOTER */
+.site-footer {
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.site-footer h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.site-footer p {
+    margin: 5px 0;
+}
+
+.site-footer .socials a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.site-footer .socials a:hover {
+    text-decoration: underline;
+}
+</style>
+
+</head>
+<body>
+
+<header class="ai-header">
+    <a href="index.html" class="ai-title-btn">
+        AI STORITVE
+    </a>
+</header>
+
+<div class="nav-bar">
+    <div class="nav-item" onclick="window.location.href='prompti.html'">PROMPTI</div>
+    <div class="nav-item" onclick="window.location.href='orodja.html'">ORODJA</div>
+    <div class="nav-item" onclick="window.location.href='tutorials.html'">TUTORIALS</div>
+</div>
+
+<div class="container">
+
+    <div class="prompt-card">
+        <div class="prompt-content">
+            <div class="prompt-title">Lego Prompt</div>
+            <div class="prompt-text" id="prompt1">
+                Create a high-quality LEGO minifigure character based on the person in the reference image. Use the subject’s hairstyle, skin tone, facial expression, and outfit as inspiration. Translate their key features — such as eyes, eyebrows, mouth, and accessories — into the iconic LEGO minifigure aesthetic.
+            </div>
+        </div>
+        <button class="copy-btn"
+            onmouseenter="resetBtn(this)"
+            onclick="copyText('prompt1', this)">
+            COPY
+        </button>
+    </div>
+
+    <div class="prompt-card">
+        <div class="prompt-content">
+            <div class="prompt-title">GTA V Effect</div>
+            <div class="prompt-text" id="prompt2">
+                Rebuild the entire scene from the reference image as a real-time 3D render inside the GTA V RAGE engine. Do not apply a filter. Fully reconstruct all people, vehicles, architecture, terrain, and props as polygonal 3D assets native to GTA V. The result should look like an authentic in-game screenshot captured on a high-end PC, ultra settings enabled.
+
+All subjects must be converted into clearly modeled geometry with visible polygon structure, baked normal maps, and game-ready textures. Faces, bodies, and clothing should follow GTA V character proportions and anatomy, slightly exaggerated, rigid, and digitally sculpted. Skin is matte and textured, no photographic pores. Hair is clumped, card-based, slightly stiff. Clothing uses flat fabric shaders with visible seams and texture repetition.
+
+Environment must feel like Los Santos or Blaine County logic. Buildings are modular, edges slightly sharp, surfaces tiled and optimized. Roads, sidewalks, vegetation, street props, and background elements are simplified but dense, clearly game-constructed. No real-world photographic depth or lens artifacts.
+
+Lighting follows GTA V real-time lighting behavior. Strong directional sunlight or overcast skylight depending on scene. Hard shadows with defined edges, subtle ambient occlusion in corners. Reflections are screen-space and imperfect. Colors are slightly saturated with the recognizable GTA V color grading. Contrast is controlled but punchy.
+
+Materials must read as video game assets. Asphalt is flat and grainy. Metal has simple specular highlights. Glass is clean with limited reflection depth. Vegetation is slightly stiff and stylized. Nothing should appear physically accurate or cinematic-render realistic.
+
+Camera should feel like a gameplay or Rockstar Editor capture. Third-person or free camera perspective. Slight wide-angle distortion. Stable framing. No depth-of-field blur. No motion blur unless minimal and engine-based.
+
+Overall look is unmistakably GTA V. Real-time 3D. Polygonal. Textured. Optimized. Stylized realism. Clearly not a photograph.
+            </div>
+        </div>
+        <button class="copy-btn"
+            onmouseenter="resetBtn(this)"
+            onclick="copyText('prompt2', this)">
+            COPY
+        </button>
+    </div>
+
+    <div class="prompt-card">
+        <div class="prompt-content">
+            <div class="prompt-title">Quality upscale Nano Banana</div>
+            <div class="prompt-text" id="prompt3">
+                Ultra-high-resolution 4K enhancement based strictly on the provided reference image. Absolute fidelity to original facial anatomy, proportions, and identity. Preserve expression, gaze, pose, camera angle, framing, and perspective with zero deviation. Clothing, hair, skin, and background elements must remain unchanged in structure, placement, and design.
+
+Recover fine-grain detail with natural realism. Enhance pores, fine lines, hair strands, eyelashes, fabric weave, seams, and material edges without introducing stylization. Maintain original color science, white balance, and tonal relationships exactly as captured. Lighting direction, intensity, contrast, and shadow behavior must match the source image precisely, with only improved clarity and expanded dynamic range. No relighting, no reshaping. Remove any grain.
+
+Apply controlled sharpening and high-frequency detail reconstruction. Remove compression artifacts and noise while retaining authentic texture. No smoothing, no plastic skin, no artificial gloss. Facial features must remain consistent across the entire image with coherent anatomy and clean, stable edges.
+
+Negative constraints: no warping, no facial drift, no added or missing anatomy, no altered hands, no distortions, no perspective shift, no text or graphics, no hallucinated detail, no stylized rendering. Output must read as a true-to-life, photorealistic upscale that matches the reference exactly, only clearer, sharper, and higher resolution.
+            </div>
+        </div>
+        <button class="copy-btn"
+            onmouseenter="resetBtn(this)"
+            onclick="copyText('prompt3', this)">
+            COPY
+        </button>
+    </div>
+
+    <div class="prompt-card">
+        <div class="prompt-content">
+            <div class="prompt-title">MINECRAFT Prompt</div>
+            <div class="prompt-text" id="prompt4">
+                { "task": "image_transformation", "style": { "overall_aesthetic": "High-quality cinematic Minecraft screenshot.",
+"rendering_technique": "Mixed-media: Photorealistic subject embedded in a voxel-based environment." },
+"subject_rules": { "main_subject": "The human person from the reference image must remain completely
+photorealistic and unchanged. No pixelation or block filters on their body, clothing, or face.",
+"interacting_objects": "CRITICAL: Any non-human object in direct physical contact with the subject e.g. or
+nearby pets dogs MUST be converted into Minecraft block models or mobs. A real dog becomes a Minecraft
+wolf." }, "environment_rules": { "background_analysis": "Analyze the reference image background structure
+and recreate it entirely out of Minecraft voxel blocks.", "elements": "Trees, terrain, paths, and foliage must be
+cubic blocks with pixel art textures.", "atmosphere": "Replicate the foggy forest atmosphere using blocky
+volumetric fog layers appropriate for Minecraft." }, "composition_and_lighting": { "camera": "Maintain the
+exact camera angle and framing from the reference photo.", "lighting": "Minecraft daylight with gentle haze
+and consistent block-based shadows." } } enhance
+            </div>
+        </div>
+        <button class="copy-btn"
+            onmouseenter="resetBtn(this)"
+            onclick="copyText('prompt4', this)">
+            COPY
+        </button>
+    </div>
+
+</div>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <h3>Kontakt</h3>
+        <p>Email: </p>
+
+        <div class="socials">
+            <a href="#">Facebook</a> |
+            <a href="#">Instagram</a> |
+            <a href="#">TikTok</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

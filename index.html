@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+
+  <style>
+* {
+    font-family: Arial, sans-serif;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.ai-header {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.ai-header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+}
+
+.nav-bar {
+    display: flex;
+    height: 60px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* hover effect */
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* ////////////////////////////////////////////////////////////*/
+
+
+/* MAIN SECTION (after header) */
+.section {
+    position: relative;
+    height: 1000px;
+    overflow: hidden; /* crops sides */
+}
+
+/* BLURRED BACKGROUND IMAGE */
+.bg-blur {
+    position: absolute;
+    width: 120%; /* bigger so blur doesn't show edges */
+    height: 1000px;
+    top: 0;
+    left: -10%;
+    background: url("4K_ozadje.jpeg") center/cover no-repeat;
+    z-index: 1;
+}
+
+
+/* IMAGE STACK CONTAINER */
+.stack {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+}
+
+
+.stack img {
+    position: absolute;
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* spredaj */
+.img1 {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+/* sredina */
+.img2 {
+    bottom: 60px;
+    left: calc(50% + 50px);
+    transform: rotate(8deg);
+    z-index: 2;
+}
+
+/* zadaj */
+.img3 {
+    bottom: 100px;
+    left: calc(50% - 250px);
+    transform: rotate(-8deg);
+    z-index: 1;
+}
+
+.user-box {
+    position: absolute;
+    bottom: 450px; /* višina nad slikami */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px;
+    background: linear-gradient(135deg, rgba(79,172,254,0.4), rgba(0,242,254,0.6));
+    border-radius: 12px;
+    text-align: center;
+    z-index: 4; /* mora biti nad slikami */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: #fff; /* bela besedila za kontrast */
+    font-weight: bold;
+}
+
+.site-footer {
+    background: linear-gradient(135deg, #0d1b2a, #1b263b); /* gradient ozadje */
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative; /* ali fixed za fiksni na dnu */
+    bottom: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.site-footer h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.site-footer p {
+    margin: 5px 0;
+}
+
+.site-footer .socials a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.site-footer .socials a:hover {
+    text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+<header class="ai-header">
+    <h1>AI STORITVE</h1>
+</header>
+
+<div class="nav-bar">
+    <div class="nav-item" onclick="window.location.href='Prompti.html'">PROMPTI</div>
+    <div class="nav-item" onclick="alert('ORODJA')">ORODJA</div>
+    <div class="nav-item" onclick="alert('TUTORIALS')">TUTORIALS</div>
+</div>
+
+
+<div class="section">
+
+    <div class="bg-blur"></div>
+
+    <div class="stack">
+        <img src="img1.png" class="img1">
+        <img src="img2.png" class="img2">
+        <img src="img3.png" class="img3">
+    </div>
+
+    <div class="user-box">
+        Zadovoljni uporabniki <br> House of Magic Cocktails
+    </div>
+</div>
+
+
+
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <h3>Kontakt</h3>
+        <p>Email: </p>
+        
+        <div class="socials">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">TikTok</a>
+        </div>
+    </div>
+</footer>
+
+
+
+
+</body>
+</html>
